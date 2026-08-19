@@ -1,1918 +1,328 @@
-* {
-    word-break: normal;
-    -webkit-overflow-scrolling: touch;
-}
-
-html {
-    height: 100%;
-    scroll-behavior: smooth;
-}
-
-body {
-    height: 100%;
-}
-
-#app,
-.full-height,
-.page {
-    height: 100%;
-}
-
-.body {
-    background-color: var(--v-base-base);
-    scroll-behavior: smooth;
-    overflow-y: auto;
-    margin-top: 115px;
-}
-
-@media (max-width: 959px) {
-    .body {
-        margin-top: 45px;
-    }
-}
-
-.full-width {
-    width: 100%;
-}
-
-.dialog-card {
-    overflow-x: hidden;
-}
-
-/* Custom Scrollbar */
-::-webkit-scrollbar-track {
-    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
-    box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
-    border-radius: 10px;
-}
-
-::-webkit-scrollbar-thumb {
-    border-radius: 10px;
-    background: #ffce5e;
-    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.5);
-    box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.5);
-}
-
-::-webkit-scrollbar-thumb:window-inactive {
-    background: #ffce5e;
-}
-
-/* Pagination */
-.v-pagination {
-    margin: 15px 0;
-}
-
-.v-pagination li button {
-    margin: 0;
-    border-radius: 0 !important;
-    box-shadow: none !important;
-    border-top: 1px solid;
-    border-bottom: 1px solid;
-    border-left: 1px solid;
-    border-color: var(--v-base_2-base);
-    min-height: 40px;
-    min-width: 40px !important;
-    font-size: 16px;
-}
-
-.v-pagination li:first-child button {
-    border-top-left-radius: 10px !important;
-    border-bottom-left-radius: 10px !important;
-}
-
-.v-pagination li:last-child button {
-    border-right: 1px solid;
-    border-color: var(--v-base_2-base);
-    border-top-right-radius: 10px !important;
-    border-bottom-right-radius: 10px !important;
-}
-
-/* Base Buttons */
-.button-primary {
-    position: relative;
-    min-height: 28px;
-    min-width: 80px;
-    border-radius: 3px;
-    background: linear-gradient(90deg, #fbc103 0, #f79604 15%, #f79604 30%, #fbc103 55%, #fbc103);
-    background-position: -50% 0;
-    box-shadow: 0 6px 6px 1px rgba(6, 8, 15, 0.1), inset 0 0 3px 0 #ffdd8f;
-    transition: background-position 0.3s ease-in, box-shadow 0.5s ease-out 0.1s, text-shadow 0.3s ease-in 0.1s;
-    color: #fff;
-}
-
-.button-primary:before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    bottom: 0;
-    right: 0;
-    background: url(/static/btn-light.png) no-repeat top;
-    background-position: 0 0;
-    background-size: 100%;
-}
-
-.button-primary:hover {
-    transition-duration: 0.6s;
-    transition-delay: 0.3s;
-    background-position: 0 0;
-    background: linear-gradient(90deg, #fbc103 0, #f79604 15%, #f79604 65%, #fbc103);
-    box-shadow: 0 2px 2px 1px rgba(6, 8, 15, 0.1), 0 4px 4px 1px rgba(6, 8, 15, 0.1), 0 8px 8px 1px rgba(6, 8, 15, 0.1), 0 16px 16px 1px rgba(6, 8, 15, 0.1), 0 32px 32px 1px rgba(6, 8, 15, 0.1), inset 0 0 3px 0 #ffdd8f;
-    text-shadow: 0 1px 3px #967302;
-}
-
-/* Card Containers */
-.card_container[data-v-7a1d732b] {
-    margin-top: 70px;
-    border-radius: 20px;
-}
-
-.card_container.nonBanking[data-v-7a1d732b] {
-    margin-top: 0;
-}
-
-@media (max-width: 599px) {
-    .card_container[data-v-7a1d732b] {
-        margin-top: 20px;
-        border-radius: 20px;
-    }
-}
-
-/* Instant Popups */
-.close_instant {
-    position: absolute;
-    width: auto;
-    float: right;
-    top: 17px;
-    right: 2%;
-    z-index: 99999;
-    color: #fff !important;
-    background: rgba(0, 0, 0, 0.55);
-    border-radius: 50%;
-}
-
-.v-dialog.box_instant {
-    box-shadow: none !important;
-}
-
-.popupImage {
-    text-align: center;
-}
-
-.popupImage > img {
-    text-align: center;
-    width: 430px;
-    height: auto;
-    padding: 5px;
-    border-radius: 20px;
-}
-
-.popupText {
-    margin: 5px;
-    padding: 40px 30px !important;
-    background: #fff;
-    border-radius: 20px;
-    color: #333;
-    font-size: 14px;
-    line-height: 1.6;
-    text-align: left;
-    word-wrap: break-word;
-    overflow-wrap: break-word;
-    max-height: 70vh;
-    overflow-y: auto;
-}
-
-.popupTitle {
-    font-size: 18px;
-    font-weight: 700;
-    text-decoration: underline;
-    margin-bottom: 12px;
-}
-
-.popupText--with-delimiters {
-    margin-bottom: 55px;
-}
-
-.popupText p {
-    margin-bottom: 8px;
-}
-
-.popupText p:last-child {
-    margin-bottom: 0;
-}
-
-@media (max-width: 750px) {
-    .popupImage > img {
-        width: 385px;
-    }
-
-    .close_instant {
-        right: 20px;
-    }
-}
-
-@media (max-width: 450px) {
-    .popupImage > img {
-        width: 305px;
-    }
-
-    .close_instant {
-        right: 5px;
-    }
-}
-
-/* Contact Us FAB & Side Panels */
-.fab-contactUs {
-    position: fixed;
-    bottom: 8%;
-    right: 0;
-    z-index: 5;
-    text-decoration: none;
-}
-
-.fab-contactUs .contactUs-icon {
-    width: 72px;
-    height: 72px;
-    cursor: pointer;
-}
-
-.fab-contactUs .pngImage {
-    width: 63px;
-    height: 63px;
-}
-
-.fab-contactUs .pngImageAnchor {
-    margin: 0 auto;
-}
-
-.fab-contactUs .mobile-livechat-icon {
-    width: 61px !important;
-    height: 61px !important;
-    cursor: pointer;
-}
-
-.floating-right {
-    position: fixed;
-    display: flex;
-    z-index: 5;
-    right: 0;
-    top: 50%;
-}
-
-.floating-right:focus:after {
-    width: 100%;
-    height: 100%;
-    position: absolute;
-    z-index: 4;
-    background-color: rgba(0, 0, 0, 0.65);
-}
-
-.floating-right .floating-button {
-    background-image: linear-gradient(90deg, #f48020, #f05724);
-    color: #fff;
-    text-align: center;
-    text-transform: uppercase;
-    -ms-writing-mode: tb-lr;
-    writing-mode: vertical-lr;
-    text-orientation: mixed;
-    transform: rotate(180deg);
-    padding: 12px 8px;
-    top: 0;
-    cursor: pointer;
-}
-
-.floating-right .contactUs-panel {
-    background-color: #f5f5f5;
-}
-
-.floating-right .contactUs-panel .contactUs-header {
-    font-size: 1em;
-    max-width: 212px;
-    text-align: center;
-    padding: 0 12px;
-}
-
-.floating-right .contactUs-panel .contactUs-header .contactUs-header-icon {
-    width: 80px;
-    height: 80px;
-}
-
-.floating-right .contactUs-panel .contactUs-item {
-    width: 100%;
-    padding: 8px;
-    gap: 8px;
-    text-decoration: none;
-    cursor: pointer;
-}
-
-.floating-right .contactUs-panel .contactUs-item .contactUs-icon {
-    width: 32px;
-    height: 32px;
-}
-
-.floating-right .contactUs-panel .livechat-item {
-    background-image: linear-gradient(#f48020, #f05724);
-    color: #fff;
-}
-
-.floating-right .contactUs-panel .telegram-item {
-    background-image: linear-gradient(#45b4e4, #0092c8);
-    color: #fff;
-}
-
-.floating-right .contactUs-panel .email-item {
-    background-image: linear-gradient(#70c59e, #368f6b);
-    color: #fff;
-}
-
-.floating-right .contactUs-panel .metaMessenger-item {
-    background-image: linear-gradient(180deg, #3a5795 0, #2b4886);
-    color: #fff;
-}
-
-/* Forms & Dialogs */
-.otp-button {
-    color: #000;
-    border-radius: 10px;
-    width: 100%;
-    font-size: 14px !important;
-    padding: 9px !important;
-    text-transform: capitalize;
-}
-
-.registerTnc-iframe {
-    width: 100%;
-    height: 500px;
-}
-
-.sms-confirm-button.col {
-    padding-left: 1em;
-}
-
-.sms-confirm-button.col button {
-    margin-top: 0 !important;
-    height: 50px !important;
-}
-
-.resgiter-dialog-pagination {
-    background-color: #acacac;
-    color: #fff !important;
-}
-
-.resgiter-dialog-pagination-active {
-    background-color: #14805e;
-    border-radius: 30px;
-    color: #fff !important;
-}
-
-.resgiter-dialog-pagination.theme--light.v-btn.v-btn--disabled {
-    color: #fff !important;
-}
-
-@media (max-width: 959px) {
-    .otp-button {
-        height: 35px !important;
-        font-size: 13px !important;
-        padding: 10px !important;
-    }
-}
-
-@media (max-width: 599px) {
-    .otp-button {
-        height: 35px !important;
-        font-size: 13px !important;
-        padding: 11px !important;
-    }
-}
-
-@media (max-width: 425px) {
-    .otp-button {
-        height: 35px !important;
-        font-size: 13px !important;
-        padding: 7px !important;
-    }
-}
-
-@media (max-width: 375px) {
-    .otp-button {
-        height: 35px !important;
-        font-size: 11px !important;
-        padding: 4px !important;
-    }
-
-    .reg-mobile-prefix.v-input {
-        font-size: 12px !important;
-    }
-
-    .reg-mobile-prefix.v-input .v-select__selection--comma {
-        margin: 7px 0 7px 0 !important;
-    }
-
-    .reg-mobile-prefix.v-input .v-input__icon {
-        height: 14px !important;
-        width: 14px !important;
-        min-width: 14px !important;
-    }
-}
-
-.login-form .input-field .v-input__control .v-input__slot .v-text-field__slot .v-label {
-    line-height: 15px;
-    text-transform: capitalize !important;
-}
-
-.login-form .v-messages__message {
-    font-size: 9px !important;
-}
-
-.language-button-div {
-    line-height: 15px;
-    min-height: 40px !important;
-}
-
-.embedded-login-button {
-    height: 1.5rem;
-    width: 120px;
-    background-color: transparent !important;
-    border: 1px solid #fff;
-    color: #fff !important;
-}
-
-.embedded-login-button:hover {
-    border: 1px solid var(--v-secondary-base);
-}
-
-.embedded-register-button {
-    height: 28px;
-    width: 120px;
-    border-radius: 4px;
-    background: var(--v-secondary-base) !important;
-    box-shadow: 0 2px 8px 0 rgba(6, 8, 15, 0.1), inset 0 0 3px 0 #ffdd8f;
-    transition: box-shadow 0.5s ease-out 0.1s, background-position 0.3s ease-in, text-shadow 0.3s ease-in 0.1s;
-}
-
-.embedded-register-button .v-btn:before {
-    background-color: transparent;
-}
-
-.embedded-register-button:hover {
-    transition-duration: 0.6s;
-    transition-delay: 0.3s;
-    background-position: 50% 0;
-    box-shadow: 0 4px 8px 1px #06080f;
-}
-
-.forgot-button {
-    position: absolute;
-    top: 65px;
-    right: 37%;
-}
-
-.register-button {
-    min-width: 120px;
-}
-
-.toolbar-caption,
-.toolbar-icon {
-    color: var(--v-text_reverse-base);
-}
-
-.toolbar-icon {
-    font-size: 1.1rem;
-}
-
-.toolbar-caption {
-    line-height: 0.8rem;
-}
-
-.forum-icon,
-.service-icon {
-    width: 24px;
-    height: 24px;
-    background-color: var(--v-text_reverse-base);
-}
-
-.forum-icon {
-    -webkit-mask: url(/static/svg/header-forum-icon.svg) no-repeat center;
-    mask: url(/static/svg/header-forum-icon.svg) no-repeat center;
-}
-
-.service-icon {
-    -webkit-mask: url(/static/svg/header-service-icon.svg) no-repeat center;
-    mask: url(/static/svg/header-service-icon.svg) no-repeat center;
-}
-
-@media (max-width: 959px) {
-    .embedded-mobile-login-button {
-        width: 70px !important;
-        height: 30px !important;
-        font-size: 12px !important;
-    }
-
-    .embedded-mobile-register-button {
-        width: 98px !important;
-    }
-}
-
-.captcha-code {
-    display: flex;
-    justify-content: flex-end;
-}
-
-.captcha-code .captcha,
-.captcha-code .refresh {
-    min-height: 40px;
-    height: 40px;
-    background-color: var(--v-primary-base);
-}
-
-.captcha-code .captcha {
-    text-align: center;
-}
-
-.captcha-code .refresh {
-    display: inline-flex;
-    width: 28px;
-}
-
-.captcha-code .refresh i {
-    color: #fff;
-}
-
-.profile-alert-success .v-icon {
-    color: #25b34b;
-}
-
-.profile-alert-failed .v-icon {
-    color: #dc2d2d;
-}
-
-.forgot_password_panel {
-    color: #000;
-    background-color: #fff;
-    padding: 12px 16px !important;
-}
-
-.forgot_password_panel .width-auto {
-    width: 100%;
-    min-width: unset;
-}
-
-.forgot_password_panel .link-underscore:hover {
-    text-decoration: underline;
-    color: var(--v-primary-base);
-}
-
-.forgot_password_panel input::-moz-placeholder {
-    color: var(--v-description-base) !important;
-    opacity: 1;
-}
-
-.forgot_password_panel input:-ms-input-placeholder {
-    color: var(--v-description-base) !important;
-    opacity: 1;
-}
-
-.forgot_password_panel input::placeholder {
-    color: var(--v-description-base) !important;
-    opacity: 1;
-}
-
-.forgot_password_panel .otp-button {
-    background-color: var(--v-primary-base);
-    border-radius: 4px;
-}
-
-.v-text-field--outlined .v-label {
-    top: 11px;
-}
-
-.text-none {
-    text-transform: none;
-}
-
-.v-menu__content {
-    top: 206px;
-}
-
-/* Page Navigation */
-.page-navigator {
-    position: fixed;
-    margin-top: 70px;
-    background-color: var(--v-background_2-base);
-    width: 100%;
-    z-index: 9;
-}
-
-.page-navigator .page-navigator-wrapper {
-    display: flex;
-    justify-content: space-between;
-    max-width: 1240px;
-    height: 45px;
-    white-space: nowrap;
-    margin: auto;
-}
-
-.page-navigator .page-navigator-item {
-    display: flex;
-    vertical-align: middle;
-    text-align: center;
-    height: 100%;
-    width: 100%;
-    list-style: none;
-}
-
-.page-navigator .page-navigator-item .page-navigator-button {
-    color: var(--v-text_reverse-base) !important;
-    cursor: pointer;
-    height: 100%;
-    width: 100%;
-}
-
-.page-navigator .page-navigator-item .page-navigator-button:before {
-    content: "";
-    position: absolute;
-    height: 100%;
-    width: 100%;
-    bottom: 0;
-    left: 0;
-    border-bottom: 2px solid #ffdf18;
-    border-radius: 0;
-    opacity: 0;
-    transition: bottom 0.2s ease-in, opacity 0.3s ease-out;
-    background: url(/static/image/navigator/nav-light.png) no-repeat bottom;
-    background-size: 100% 20%;
-}
-
-.page-navigator .page-navigator-item .page-navigator-button:after {
-    content: "";
-    position: absolute;
-    top: 0.875rem;
-    right: 0;
-    bottom: auto;
-    left: auto;
-    width: 1px;
-    height: 0.875rem;
-    opacity: 1;
-    background: var(--v-background-base);
-}
-
-.page-navigator .page-navigator-item .page-navigator-button:hover::before {
-    opacity: 1;
-}
-
-.page-navigator .page-navigator-item .page-navigator-button.v-btn--active {
-    color: var(--v-primary-lighten3);
-}
-
-.page-navigator .page-navigator-item .page-navigator-button.v-btn--active:before {
-    color: var(--v-primary-lighten3);
-    opacity: 1;
-}
-
-.page-navigator .page-navigator-item .page-navigator-button:hover {
-    color: var(--v-primary-lighten3);
-    background-color: transparent;
-    transition: bottom 0.2s ease-in, opacity 0.3s ease-out;
-}
-
-@keyframes page-sub-navigator {
-    0% {
-        height: 0;
-    }
-    100% {
-        height: 245px;
-    }
-}
-
-.page-sub-navigator {
-    position: relative;
-    text-align: left;
-    background-color: hsla(0, 0%, 100%, 0.9);
-    animation: page-sub-navigator 0.3s linear;
-    height: 249px;
-}
-
-.page-sub-navigator.elevation-2 {
-    overflow: auto;
-    height: auto;
-}
-
-.page-sub-navigator .page-sub-navigator-header {
-    position: relative;
-    width: 1240px;
-    margin: auto;
-    height: 32px;
-    background-color: rgba(51, 57, 168, 0.9);
-    z-index: 1;
-}
-
-.page-sub-navigator .page-sub-navigator-left-control,
-.page-sub-navigator .page-sub-navigator-right-control {
-    position: absolute;
-    top: calc(50% - 32px);
-    z-index: 1;
-    font-size: 42px;
-    color: var(--v-primary-base);
-    margin: 0 1.5rem;
-    cursor: pointer;
-}
-
-.page-sub-navigator .page-sub-navigator-left-control {
-    left: 0;
-}
-
-.page-sub-navigator .page-sub-navigator-right-control {
-    right: 0;
-}
-
-.page-sub-navigator .page-sub-navigator-left-control:hover,
-.page-sub-navigator .page-sub-navigator-right-control:hover {
-    color: var(--v-primary-lighten3);
-}
-
-.page-sub-navigator .page-sub-navigator-wrapper {
-    position: relative;
-    top: -32px;
-    max-height: 100%;
-    max-width: 1240px;
-    margin: 0 auto;
-    display: flex;
-    flex-flow: wrap;
-}
-
-.page-sub-navigator ::-webkit-scrollbar-thumb {
-    background: red;
-    border-radius: 6px;
-}
-
-.page-sub-navigator .page-sub-navigator-item {
-    display: inline-block;
-    vertical-align: middle;
-    margin: 0 13px;
-    cursor: pointer;
-}
-
-.page-sub-navigator .page-sub-navigator-item .vendor-text {
-    position: absolute;
-    top: -28px;
-    color: #000;
-    padding: 4px;
-    z-index: 2;
-}
-
-.page-sub-navigator .page-sub-navigator-item .game_card {
-    width: 175px;
-    height: auto;
-    margin: 40px auto 30px auto;
-}
-
-.page-sub-navigator .page-sub-navigator-item .game_card:hover:after {
-    background-color: var(--v-primary-base);
-}
-
-.page-sub-navigator .page-sub-navigator-item .item-maintenance {
-    background-color: var(--v-background_2-base);
-    width: 100%;
-    height: 100%;
-    position: absolute;
-    z-index: 1;
-    opacity: 0.8;
-    top: 0;
-    left: 50%;
-    transform: translateX(-50%);
-}
-
-.page-sub-navigator .page-sub-navigator-item .item-maintenance .item-maintenance-label {
-    top: 50%;
-    left: 50%;
-    width: 100%;
-    transform: translate(-50%, -50%);
-    position: absolute;
-    font-weight: 700;
-}
-
-.menu-navigator {
-    cursor: pointer;
-}
-
-.img-hot {
-    position: absolute;
-    top: 0;
-    width: 27px;
-}
-
-.img-new {
-    position: absolute;
-    width: 45px;
-}
-
-/* Footer */
-.v-footer {
-    position: unset;
-}
-
-.v-footer .footer-title {
-    font-size: 12px;
-    font-family: ReadexPro-Bold;
-}
-
-.v-footer .footer_wrapper {
-    max-width: 1240px;
-    margin: 30px auto;
-    font-size: 12px;
-}
-
-.v-footer .footer_wrapper .footer-container-1 {
-    display: flex;
-    justify-content: space-between;
-    flex-wrap: wrap;
-    row-gap: 20px;
-}
-
-.v-footer .footer_wrapper .footer-container-1 .column-gap {
-    gap: 4px;
-}
-
-.v-footer .footer-divider {
-    color: var(--v-divider-base);
-}
-
-.v-footer .footer-logo {
-    width: 120px;
-}
-
-.v-footer .footer-disabled {
-    filter: grayscale(100%);
-}
-
-.v-footer .footer-icon {
-    max-width: 32px;
-    max-height: 32px;
-}
-
-.v-footer .seo_text {
-    font-size: 1.17em;
-}
-
-.v-footer .footer-link-divider {
-    border-color: #3a3a3a;
-}
-
-.v-footer .footer-support:hover {
-    color: var(--v-primary-base);
-}
-
-.v-footer .gaming-license {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: flex-end;
-}
-
-.v-footer .payment-methods-icons {
-    gap: 12px;
-}
-
-.v-footer .faq-container {
-    text-align: end;
-}
-
-.v-footer .faq-container .faq-wrapper {
-    gap: 12px;
-    color: var(--v-primary-base);
-    margin: 0 0 12px 0;
-    justify-content: flex-end;
-}
-
-@media (max-width: 599px) {
-    .footer {
-        margin-bottom: 50px;
-    }
-
-    .footer .footer_wrapper .footer-container-1 .customer-support {
-        width: 50%;
-    }
-
-    .footer .footer_wrapper .footer-container-1 .community {
-        width: calc(50% - 10px);
-    }
-
-    .footer .footer_wrapper .footer-container-1 .payment-methods {
-        width: calc(45% - 10px);
-    }
-
-    .footer .footer_wrapper .footer-container-1 .payment-methods-icons {
-        gap: 20px;
-    }
-
-    .footer .footer_wrapper .faq-container {
-        text-align: start;
-    }
-
-    .footer .footer_wrapper .faq-container .faq-wrapper {
-        justify-content: flex-start;
-    }
-}
-
-/* Animations & Effects */
-.pulse {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 9.1875rem;
-    height: 9.1875rem;
-    border-radius: 9.375rem;
-    background: rgba(0, 0, 0, 0.25);
-}
-
-.pulse:before,
-.pulse:after {
-    content: "";
-    position: absolute;
-    left: -2px;
-    top: -2px;
-    right: -2px;
-    bottom: -2px;
-    border: 2px solid #142590;
-    border-radius: 50%;
-    animation: animate 2s linear infinite;
-}
-
-.pulse:after {
-    animation-delay: 1s;
-}
-
-@keyframes animate {
-    0% {
-        box-shadow: 0 0 0.0625rem #514bbe;
-    }
-    30%, 35% {
-        box-shadow: 0 0 2.1875rem #514bbe;
-    }
-    60%, 65% {
-        box-shadow: 0 0 0 #514bbe;
-    }
-    100% {
-        box-shadow: 0 0 1px #514bbe;
-    }
-}
-
-/* Login & Language Panels */
-.login_panel {
-    color: #000;
-    background-color: #fff;
-    padding: 12px 16px !important;
-}
-
-.login_panel .dialog-header {
-    background-color: var(--v-primary-base);
-}
-
-.login_panel .link-underscore:hover {
-    text-decoration: underline;
-    color: var(--v-primary-base);
-}
-
-.login_panel .forgot-password {
-    margin-bottom: 12px;
-}
-
-.login_panel .forgot-password .theme--dark.v-btn {
-    color: #000;
-}
-
-.login_panel .forgot-password .v-btn:hover {
-    text-decoration: underline;
-    color: var(--v-primary-base);
-    cursor: pointer;
-}
-
-.login_panel .forgot-password .v-btn:before {
-    background-color: unset;
-}
-
-.language_panel {
-    color: #000;
-    background-color: #fff;
-    padding: 12px 16px !important;
-}
-
-.language_panel .language-divider {
-    border-color: var(--v-border-base);
-}
-
-.language_panel .v-btn-toggle--group .v-btn {
-    color: #000;
-    border: 1px solid var(--v-description-base);
-}
-
-.language_panel .v-btn-toggle--group .v-btn.v-btn--active,
-.language_panel .v-btn-toggle--group .v-btn:hover {
-    color: var(--v-primary-base);
-    border: 1px solid var(--v-primary-base);
-}
-
-.language_panel .v-btn:before {
-    background-color: unset;
-}
-
-@media (max-width: 425px) {
-    .language_panel .v-btn {
-        font-size: 12px !important;
-        height: 35px !important;
-    }
-}
-
-/* Helper Utilities */
-.breakWord-onspace {
-    white-space: normal;
-}
-
-.vip-badge-mobile .v-badge {
-    margin-top: 11px;
-}
-
-.v-btn--is-elevated {
-    box-shadow: 0 0 !important;
-}
-
-.coin_box_gif {
-    position: fixed;
-    bottom: 32%;
-    right: 10px;
-    z-index: 200;
-    cursor: pointer;
-}
-
-.grab_coin_icon {
-    animation: swing 1.2s;
-    animation-iteration-count: 3;
-}
-
-@keyframes swing {
-    20% {
-        transform: rotate(15deg);
-    }
-    40% {
-        transform: rotate(-10deg);
-    }
-    60% {
-        transform: rotate(5deg);
-    }
-    80% {
-        transform: rotate(-5deg);
-    }
-    100% {
-        transform: rotate(0deg);
-    }
-}
-
-.language_desktop {
-    position: absolute;
-    top: 70px;
-    right: 3.5%;
-}
-
-.download-bar {
-    position: fixed;
-    z-index: 5;
-    height: 60px;
-    width: 100%;
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    padding: 0 12px;
-    background-color: #f5f5f5;
-    line-height: 1;
-}
-
-.download-bar .download-bar-button {
-    background: #9584ff !important;
-    color: #fff;
-}
-
-.download-bar-height {
-    margin-top: 60px;
-}
-
-.download-bar-height-body {
-    margin-top: 104px;
-}
-
-.icon_middle_nav {
-    width: 30px;
-    stroke: #fff;
-    fill: #fff;
-}
-
-.icon_btm_nav {
-    width: 19px;
-    height: 19px;
-    margin-top: 8px;
-    fill: var(--v-text_color-base);
-}
-
-.icon_btm_nav.chat {
-    stroke: #fff;
-    fill: #fff;
-    width: 23px;
-    margin-bottom: -8px;
-}
-
-.icon_normal {
-    width: 25px;
-    fill: #fff;
-    color: #000;
-    stroke: #e4282f;
-}
-
-.icon_large {
-    width: 35px;
-    fill: #fff;
-    color: #000;
-    margin-top: -5px;
-}
-
-.gold-gradient {
-    background: transparent linear-gradient(180deg, #ffa15c, #e2d200) 0 0 no-repeat padding-box;
-    font-weight: 700;
-}
-
-.btn_img_lc {
-    width: 30px;
-    padding-bottom: 0;
-    padding-left: 5px;
-    margin-left: 10px;
-}
-
-.gold-color {
-    background-color: #b87953 !important;
-}
-
-.yellow-color {
-    background-color: #fddd04 !important;
-}
-
-.v-btn.theme-button.liveChatButton {
-    background: transparent linear-gradient(90deg, #fa786a, #c83563 50%, #86286d) 0 0 no-repeat padding-box !important;
-    border-radius: 15px;
-}
-
-.mobile-member-info-box {
-    padding: 5px 15px;
-    background: #121734;
-    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.26);
-    border-radius: 8px;
-}
-
-.mobile-member-info-box .mobile-member-info-box-text {
-    font-size: 15px;
-}
-
-.mobile-member-info-box .mobile-member-info-box-text-icon {
-    font-size: 12px;
-}
-
-.mobile-member-info-box .mobile-member-info-box-balance {
-    font-size: 15px;
-    font-weight: 700;
-}
-
-.mobile-member-info-box .mobile-member-info-box-icon {
-    height: auto !important;
-}
-
-.mobile-member-info-box .mobile-member-info-box-icon .v-icon {
-    font-size: 28px;
-}
-
-.liveChatButton {
-    width: 200px;
-    border-bottom-right-radius: 0 !important;
-    border-bottom-left-radius: 0 !important;
-    z-index: 1;
-    min-height: auto !important;
-    position: fixed;
-    height: auto;
-    top: 30%;
-    right: -80px;
-    transform: rotate(-90deg);
-}
-
-.liveChatButton span {
-    font-size: 24px;
-    font-weight: 400;
-}
-
-.header-row {
-    display: flex;
-    flex-direction: column;
-    padding-left: 1em;
-    padding-right: 1em;
-}
-
-button.round {
-    border-radius: 50% !important;
-}
-
-button.buttonWhite {
-    box-shadow: none;
-}
-
-button span {
-    letter-spacing: 0;
-}
-
-.v-btn.primary-button {
-    border-radius: 10px;
-    color: #fff;
-    text-transform: capitalize;
-    width: 100%;
-    font-size: 16px;
-}
-
-.sticky-header {
-    position: sticky;
-    top: 0;
-}
-
-.brand-logo {
-    position: absolute;
-    left: 3%;
-    transform: translateX(-3%);
-    z-index: 1;
-    top: -1%;
-    width: 300px;
-    margin-top: 20px;
-}
-
-.mobile-brand-logo {
-    width: 250px;
-}
-
-.img_flag_select {
-    width: 23px;
-    height: 17px;
-    margin-left: -10px;
-    margin-right: 4px;
-}
-
-.member-menu-divider {
-    border-color: #fff !important;
-}
-
-.div_header {
-    background-color: #2d3487;
-    padding-top: 20px;
-}
-
-.splitter_header {
-    padding: 0;
-    background-color: #3a3eb1;
-    margin: 0 auto;
-}
-
-.header-icon-button-link {
-    height: 40px !important;
-    min-width: auto !important;
-    width: 40px !important;
-    margin-left: 8px;
-}
-
-.header-icon-button-more {
-    height: 40px !important;
-}
-
-.status-bar {
-    position: fixed;
-    z-index: 5;
-    height: 30px;
-    width: 100%;
-    background-color: var(--v-base-base);
-    font-size: 14px;
-}
-
-.status-bar .status-bar-wrapper {
-    width: 100%;
-    max-width: 1240px;
-    margin: auto;
-}
-
-.status-bar .status-bar-language .v-btn {
-    background: hsla(0, 0%, 100%, 0.3);
-    height: auto;
-}
-
-.status-bar .status-bar-language .v-btn:hover {
-    background-color: #0d543e;
-}
-
-.status-bar .status-bar-language .v-btn__content {
-    text-transform: capitalize;
-}
-
-.status-bar .status-bar-icon {
-    display: flex;
-    position: relative;
-    color: var(--v-text_color-darken2);
-    padding: 0 8px;
-    cursor: pointer;
-}
-
-.status-bar .status-bar-icon i {
-    padding: 0 4px 0 0;
-    color: var(--v-text_color-darken2);
-}
-
-.status-bar .status-bar-icon .v-image {
-    margin-right: 4px;
-}
-
-.status-bar .status-bar-icon:hover,
-.status-bar .status-bar-icon:hover i {
-    color: var(--v-text_color-lighten1);
-}
-
-.status-bar .status-bar-icon:not(:last-child):before {
-    content: "";
-    position: absolute;
-    top: 20%;
-    right: 0;
-    width: 1px;
-    height: 60%;
-    border-right: 1px solid var(--v-text-base);
-    opacity: 0.8;
-}
-
-.header-top {
-    height: 80px;
-    background: linear-gradient(180deg, var(--v-primary-lighten2), var(--v-primary-base));
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-    position: fixed;
-    z-index: 5;
-}
-
-.header-top .v-toolbar__content {
-    max-width: 1240px;
-    width: 100%;
-    margin: auto;
-    padding: 0;
-}
-
-.header-column,
-.header-top .theme--dark.v-btn.v-btn--icon {
-    color: var(--v-text_reverse-base);
-}
-
-.header-column .is-login-header {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-}
-
-.header-column .refresh-balance {
-    transition: transform 0.5s;
-}
-
-.header-column .refresh-balance:hover {
-    transform: rotate(215deg);
-}
-
-.header-column .invisible-button {
-    height: 1.5rem;
-    min-width: 120px;
-    padding: 4px 12px;
-    cursor: pointer;
-    opacity: 1;
-}
-
-.header-column .invisible-button .v-btn__content {
-    opacity: 1 !important;
-}
-
-.header-column .invisible-button label {
-    cursor: pointer;
-}
-
-.header-column .invisible-button:hover {
-    border: 1px solid var(--v-secondary-base);
-    border-radius: 8px;
-}
-
-.account-actions {
-    display: flex;
-}
-
-.account-actions a {
-    margin-left: 5px;
-    margin-right: 5px;
-    text-decoration: none;
-}
-
-.account-actions .flex-column {
-    padding-right: 5px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    cursor: pointer;
-    font-size: 12px;
-}
-
-.account-actions .flex-column img {
-    height: 35px;
-}
-
-.header-bottom {
-    min-height: 100px;
-    color: #fff;
-    background: transparent linear-gradient(180deg, #4145c4, #121734 150%) 0 0 no-repeat padding-box;
-    position: sticky;
-    top: 0;
-    z-index: 15;
-}
-
-/* Side Drawer */
-.side-navigation-drawer .list-item-container {
-    padding: 0 20px;
-}
-
-.side-navigation-drawer .side-nav-logo {
-    background-color: #303030;
-    padding: 12px 32px;
-    margin: 0 !important;
-    border-radius: 0 !important;
-}
-
-.side-navigation-drawer .v-list {
-    padding: 0;
-}
-
-.side-navigation-drawer .v-list-item__title {
-    color: var(--v-secondary-base);
-}
-
-.side-navigation-drawer a {
-    margin: 0 !important;
-}
-
-.side-navigation-drawer a.v-list-item,
-.side-navigation-drawer a.v-list-item--link,
-.side-navigation-drawer a.v-list-item--link:before,
-.side-navigation-drawer a.v-list-item:before {
-    border-radius: 0;
-}
-
-.side-navigation-drawer .mobile_list_menu .v-list-item__icon {
-    margin: 12px 0;
-}
-
-.side-navigation-drawer .v-list-item__icon:first-child {
-    margin-right: 12px;
-}
-
-.side-navigation-drawer .side-menu-icon-wrapper {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.side-navigation-drawer .side-menu-icon {
-    width: 36px;
-    height: 36px;
-}
-
-.side-navigation-drawer .vip-progress-bar .v-progress-linear__background {
-    background-color: #ebebeb !important;
-    border-color: #ebebeb !important;
-    opacity: 1 !important;
-}
-
-.side-navigation-drawer .vip-progress-bar .v-progress-linear__determinate {
-    border-radius: 10px;
-}
-
-.side-navigation-drawer .vip-progress-bar label {
-    color: #acacac;
-}
-
-/* Bottom Navigation */
-.bottom-navigator {
-    position: fixed;
-    bottom: 0;
-    z-index: 4;
-    width: 100%;
-    background-color: #514bbe;
-}
-
-.bottom-navigator .bottom-navigator-before-login {
-    height: 60px;
-    background-color: #514bbe;
-}
-
-.bottom-navigator .bottom-navigator-before-login .bottom-navigator-before-login-first {
-    color: #000;
-    background-color: #ddd;
-    border: 1px solid #ddd;
-}
-
-.bottom-navigator .bottom-navigator-before-login .bottom-navigator-before-login-second {
-    color: #fff;
-    background-color: var(--v-secondary-base);
-}
-
-.bottom-navigator .bottom-navigator-before-login .bottom-navigator-before-login-third {
-    color: #fff;
-}
-
-.bottom-navigator .theme--light.v-btn.v-btn--has-bg {
-    background-color: transparent;
-}
-
-.bottom-navigator a {
-    letter-spacing: 1px;
-    padding: 0 !important;
-    display: block;
-    border-color: var(--v-base_3-base);
-    text-decoration: none;
-}
-
-.bottom-navigator a:before {
-    opacity: 0 !important;
-}
-
-.bottom-navigator a p {
-    margin: -2px 0 0 0;
-    text-transform: capitalize;
-    color: #fff;
-}
-
-.mobile-header-detail {
-    background-color: #fff;
-    padding-left: 1em;
-    padding-right: 1em;
-    font-size: 12px;
-    min-height: 46px;
-}
-
-.mobile-header-detail .header-wallet {
-    font-size: 14px;
-    padding: 15px 35px 15px 15px;
-}
-
-.mobile-header-detail .header-wallet-icon {
-    margin-left: -25px;
-}
-
-.mobile-header-rightBtns {
-    justify-content: flex-end;
-}
-
-/* Responsive Media Queries */
-@media (max-width: 1499px) {
-    .div_header {
-        padding-top: 0;
-    }
-
-    .language_desktop {
-        top: 60px;
-        right: 4%;
-    }
-}
-
-@media (max-width: 1263px) {
-    .language_desktop {
-        right: 6%;
-    }
-
-    .header-icon-button-link {
-        height: 35px !important;
-        width: 35px !important;
-        margin-left: 4px;
-    }
-
-    .header-icon-button-more {
-        height: 35px !important;
-        margin-left: 4px;
-        min-width: auto !important;
-        width: 30px !important;
-    }
-
-    .header-icon-button-more .v-icon {
-        height: 15px !important;
-        font-size: 28px !important;
-    }
-
-    .header-text {
-        font-size: 13px !important;
-    }
-}
-
-@media (max-width: 1024px) {
-    .header-text-statis-word {
-        display: none;
-    }
-}
-
-@media (max-width: 599px) {
-    .header-top {
-        height: 60px;
-    }
-
-    .header-top .v-toolbar__content {
-        padding: 4px 16px;
-    }
-
-    .header-top .toolbar-icon {
-        color: var(--v-text_reverse-base);
-    }
-
-    .v-btn.primary-button {
-        font-size: 12px;
-        width: 100%;
-    }
-
-    .language_desktop {
-        position: absolute;
-        top: 50px;
-        right: 13%;
-    }
-
-    .liveChatButton {
-        display: none;
-    }
-
-    .header {
-        height: 50px;
-        background-image: linear-gradient(90deg, var(--v-primary-base), var(--v-primary_3-base));
-        padding: 0 15px;
-    }
-
-    .header .mobile-brand-logo {
-        width: auto !important;
-        height: 25px !important;
-        margin-top: 5px;
-    }
-
-    .header .header-mobile-livechat {
-        position: absolute;
-        top: 0;
-        right: 15px;
-        height: 100%;
-    }
-
-    .header .header-mobile-livechat .v-icon {
-        font-size: 25px;
-        padding-right: 5px;
-    }
-
-    .header .header-mobile-livechat .v-btn__content {
-        font-size: 16px;
-    }
-
-    .v-btn.v-size--default {
-        font-size: 14px;
-    }
-
-    .v-btn.v-btn--icon.v-size--default {
-        width: 40px !important;
-    }
-}
-
-/* Search Container */
-.search-container {
-    background: #fff;
-}
-
-.search-container .search-wrapper {
-    max-width: 1240px;
-    margin: auto;
-}
-
-.search-container .search-wrapper .search_game {
-    display: flex;
-    align-items: center;
-}
-
-.search-container .search-wrapper .search_game.v-text-field--filled > .v-input__control > .v-input__slot {
-    min-height: 35px;
-    max-width: 240px;
-    margin: 12px 0;
-}
-
-/* Game Vendor Section */
-.game-vendor-container {
-    white-space: nowrap;
-    background-image: linear-gradient(0, #4f4abc, #1f2b97 100%);
-    color: var(--v-text_color);
-    text-transform: capitalize;
-}
-
-.game-vendor-container .game-vendor-wrapper {
-    position: relative;
-    max-width: 1240px;
-    margin: auto;
-}
-
-.game-vendor-container .game-vendor-wrapper .more-filter {
-    position: absolute;
-    top: 0;
-    right: 0;
-    display: flex;
-    align-items: center;
-    padding: 12px;
-    height: 40px;
-    border-radius: 5px;
-    background-image: linear-gradient(0, #000, #1f2b97 100%);
-    color: var(--v-secondary-base);
-    cursor: pointer;
-    transition: background-position 0.3s ease-in, text-shadow 0.3s ease-in-out 0.1s;
-    background-size: 100% 400%;
-    background-position: 0 0;
-    box-shadow: 0 3px 15px #111;
-    z-index: 1;
-}
-
-.game-vendor-container .game-vendor-wrapper .more-filter:hover {
-    background-position: 0 25%;
-    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
-}
-
-.game-vendor-container .game-vendor-wrapper .vendor-list-item.slot-product {
-    display: inline-block;
-    margin-left: 12px;
-}
-
-.game-vendor-container .game-vendor-wrapper .vendor-list-item.slot-product .v-input {
-    margin: 0;
-    padding: 8px;
-}
-
-.game-vendor-container .game-vendor-wrapper .vendor-list-item.slot-product .v-input--is-label-active .mdi-checkbox-marked {
-    color: var(--v-secondary-base) !important;
-    caret-color: var(--v-secondary-base) !important;
-}
-
-.game-vendor-container .game-vendor-wrapper .vendor-list-item.slot-product .v-btn {
-    background: transparent;
-}
-
-.game-vendor-container .game-vendor-wrapper .game-provider .v-item--active .v-icon {
-    color: var(--v-secondary-color) !important;
-}
-
-.game-vendor-container .game-vendor-wrapper .game-list-container {
-    overflow-x: auto;
-    overflow-y: hidden;
-    white-space: nowrap;
-    background-image: transparent;
-    color: var(--v-text_color);
-}
-
-.game-vendor-container .game-vendor-wrapper .game-list-container:first-child {
-    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.5), 0 3px 10px rgba(0, 0, 0, 0.5);
-}
-
-/* Game Card Grid & Items */
-.game-container {
-    background-color: var(--v-background-lighten1);
-}
-
-.game-container .games-card-container {
-    position: relative;
-    max-width: 1240px;
-    margin: auto;
-}
-
-.game-container .games-card-container .games-card-wrapper {
-    max-width: 1240px;
-    margin: 12px auto;
-    padding: 0;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 12px;
-    justify-content: space-evenly;
-    align-items: center;
-}
-
-.game-container .games-card-container .games-card-wrapper .badge-img {
-    border-radius: 50%;
-}
-
-.game-container .games-card-container .games-card-wrapper .slot-game-badge {
-    position: relative;
-    height: 0;
-    top: 0;
-    left: 0;
-    z-index: 1;
-}
-
-.game-container .games-card-container .games-card-wrapper .v-badge__wrapper .v-badge__badge {
-    height: auto;
-}
-
-.game-container .games-card-container .games-card-wrapper .slot-game-card {
-    position: relative;
-    width: 232px;
-    height: 160px;
-}
-
-.game-container .games-card-container .games-card-wrapper .slot-game-card .slot-game-image-box {
-    width: 100%;
-    height: 100%;
-    border-radius: 5px;
-}
-
-.game-container .games-card-container .games-card-wrapper .slot-game-card .slot-game-button-container {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    top: 0;
-    left: 0;
-    opacity: 0;
-    z-index: 0;
-}
-
-.game-container .games-card-container .games-card-wrapper .slot-game-card .slot-game-button-container .slot-game-button-box {
-    position: absolute;
-    top: 0;
-    left: 0;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    height: 100%;
-    width: 100%;
-    transition: transform 1s ease-in;
-}
-
-.game-container .games-card-container .games-card-wrapper .slot-game-card .slot-game-button-container .slot-game-button-box .slot-game-demo-button {
-    background: linear-gradient(90deg, #e32131 0, #e63846 15%, #e63846 30%, #e32131 55%, #e32131);
-    background-position: 50% 0;
-    background-size: 200%;
-    box-shadow: 0 5px 10px 0 rgba(140, 18, 28, 0.1), inset 0 0 3px 0 #e63846;
-    text-transform: capitalize;
-    min-width: 120px;
-}
-
-.game-container .games-card-container .games-card-wrapper .slot-game-card.isMaintenance .slot-game-button-container {
-    opacity: 1;
-}
-
-.game-container .games-card-container .games-card-wrapper .slot-game-card .slot-game-button-container:hover {
-    opacity: 1;
-    background-color: rgba(0, 0, 0, 0.65);
-    box-shadow: inset 0 0 1px 1px var(--v-primary-base);
-}
-
-.game-container .games-card-container .games-card-wrapper .slot-game-name-box {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    padding: 5px;
-    width: 100%;
-    min-height: 24px;
-    text-align: center;
-    text-overflow: ellipsis;
-    overflow: hidden;
-    white-space: nowrap;
-    background-color: rgba(6, 12, 6, 0.5);
-    box-shadow: inset 5px 5px 10px rgba(20, 128, 94, 0.7);
-    color: #fff;
-}
-
-@media (max-width: 599px) {
-    .games-card-wrapper {
-        display: flex !important;
-        justify-content: space-evenly !important;
-    }
-
-    .games-card-wrapper .slot-game-card {
-        flex: 1 1 160px !important;
-        width: 160px !important;
-        height: 115px !important;
-    }
-
-    .games-card-wrapper .slot-game-name-box {
-        background-color: var(--v-base-base);
-    }
-}
-
-.game_pagination .v-pagination li {
-    border: none !important;
-}
-
-.game_pagination .v-pagination li button {
-    border: none !important;
-    font-size: 14px;
-}
-
-.vendor-list-item.slot-product .v-label {
-    color: #fff !important;
-}
-
-.search_game .v-label {
-    top: 8px !important;
-}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Skynet Online BD - Broadband Services</title>
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Header Section -->
+    <header id="header">
+        <div class="container">
+            <nav id="navbar">
+                <a href="#" class="logo">
+                    <img src="./images/logo.png" alt="Logo">
+                </a>
+                <div class="nav-links">
+                    <ul>
+                        <li><a href="#header">Home</a></li>
+                        <li><a href="#broadband">Broadband</a></li>
+                        <li><a href="#about">About Us</a></li>
+                        <li><a href="#package">Packages</a></li>
+                        <li><a href="#services">Services</a></li>
+                        <li><a href="#support">Support</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="menubar">
+                    <div class="bar"></div>
+                </div>
+            </nav>
+
+            <h1 class="header-heading">
+                Fast & Secure <span class="heading-blue">Broadband</span> <span class="heading-red">Internet</span>
+            </h1>
+
+            <!-- Swiper Container Example -->
+            <div class="swiper-container">
+                <div class="swiper-slide">
+                    <div class="swiper-content">
+                        <h2 class="swiper-title">Unlimited High-Speed Connection</h2>
+                        <p class="swiper-text">Experience uninterrupted browsing, streaming, and gaming with our high-speed fiber internet.</p>
+                        <button class="btn" style="margin-top: 1rem;">Get Started</button>
+                    </div>
+                    <div class="swiper-image" style="background: url('./images/header-bg.jpg') center/cover;"></div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Page Info Section -->
+    <section class="page-info">
+        <div class="container">
+            <h2 class="page-title">Welcome to Skynet Online BD</h2>
+            <p class="page-text">Your trusted partner for high-speed home and corporate internet solutions.</p>
+        </div>
+    </section>
+
+    <!-- Broadband Section -->
+    <section class="broadband" id="broadband">
+        <div class="container">
+            <h2 class="section-title" style="color: #000;">Our Broadband Plans</h2>
+            <p class="section-text" style="color: #555;">Choose the best plan that fits your digital lifestyle</p>
+            
+            <div class="broadband-cards">
+                <div class="card-content">
+                    <div class="card-icon"><i class="fa-solid fa-wifi" style="color: blue;"></i></div>
+                    <div class="card-info">
+                        <h3 class="card-title">Starter Plan</h3>
+                        <p class="card-text">Perfect for basic browsing and social media.</p>
+                        <span class="card-price">৳ 500 / mo</span>
+                    </div>
+                </div>
+                <div class="card-content">
+                    <div class="card-icon"><i class="fa-solid fa-gauge-high" style="color: blue;"></i></div>
+                    <div class="card-info">
+                        <h3 class="card-title">Standard Plan</h3>
+                        <p class="card-text">Great for streaming HD videos and online classes.</p>
+                        <span class="card-price">৳ 1000 / mo</span>
+                    </div>
+                </div>
+                <div class="card-content">
+                    <div class="card-icon"><i class="fa-solid fa-rocket" style="color: blue;"></i></div>
+                    <div class="card-info">
+                        <h3 class="card-title">Premium Plan</h3>
+                        <p class="card-text">Blazing fast speed for heavy gaming and 4K streaming.</p>
+                        <span class="card-price">৳ 1500 / mo</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Us Section -->
+    <section class="about" id="about">
+        <div class="container">
+            <h2 class="section-title">About Us</h2>
+            <p class="section-text">Empowering connectivity across the nation</p>
+            <div class="about-content">
+                <div class="about-left">
+                    <img src="./images/About.jpeg" alt="About Us">
+                </div>
+                <div class="about-right">
+                    <h3 class="about-heading">We Provide the Best Internet Experience</h3>
+                    <p class="about-text">Skynet Online BD is dedicated to delivering reliable, high-speed internet connectivity to homes and businesses. With our robust fiber-optic infrastructure and 24/7 technical support, we ensure you stay connected to what matters most.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Happy Section (Stats) -->
+    <section class="happy">
+        <div class="container">
+            <div class="happy-circle active">
+                <span class="number">10k+</span>
+                <h4 class="happy-title">Clients</h4>
+            </div>
+            <div class="happy-circle">
+                <span class="number">50+</span>
+                <h4 class="happy-title">Coverage</h4>
+            </div>
+            <div class="happy-circle">
+                <span class="number">99%</span>
+                <h4 class="happy-title">Uptime</h4>
+            </div>
+            <div class="happy-circle">
+                <span class="number">24/7</span>
+                <h4 class="happy-title">Support</h4>
+            </div>
+        </div>
+    </section>
+
+    <!-- Packages Section -->
+    <section class="package" id="package">
+        <div class="container">
+            <h2 class="section-title">Pricing Packages</h2>
+            <p class="section-text">Affordable packages designed for everyone</p>
+            
+            <div style="overflow: hidden;">
+                <div class="package-item">
+                    <ul class="price">
+                        <li class="package-item-title">Basic</li>
+                        <li>10 Mbps</li>
+                        <li>Real IP</li>
+                        <li>24/7 Support</li>
+                        <li class="package-item-price">৳ 800</li>
+                        <li><button class="btn btn-package">Select</button></li>
+                    </ul>
+                </div>
+                <div class="package-item">
+                    <ul class="price">
+                        <li class="package-item-title">Standard</li>
+                        <li>20 Mbps</li>
+                        <li>Real IP</li>
+                        <li>24/7 Support</li>
+                        <li class="package-item-price">৳ 1200</li>
+                        <li><button class="btn btn-package">Select</button></li>
+                    </ul>
+                </div>
+                <!-- You can add more package items here following the same structure -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="services" id="services">
+        <div class="container">
+            <h2 class="section-title">Our Services</h2>
+            <p class="section-text">What we offer to our clients</p>
+            <div class="services-container">
+                <div class="services-cards">
+                    <div class="services-card">
+                        <div class="services-card-icon"><i class="fa-solid fa-globe"></i></div>
+                        <div class="services-card-content">
+                            <h3 class="services-card-title">Fiber Internet</h3>
+                            <p class="services-card-text">Ultra-fast fiber optic connection straight to your home.</p>
+                        </div>
+                    </div>
+                    <div class="services-card">
+                        <div class="services-card-icon"><i class="fa-solid fa-tv"></i></div>
+                        <div class="services-card-content">
+                            <h3 class="services-card-title">IP TV</h3>
+                            <p class="services-card-text">Crystal clear digital television entertainment channels.</p>
+                        </div>
+                    </div>
+                    <div class="services-card">
+                        <div class="services-card-icon"><i class="fa-solid fa-building"></i></div>
+                        <div class="services-card-content">
+                            <h3 class="services-card-title">Corporate Bandwidth</h3>
+                            <p class="services-card-text">Dedicated line solutions built for modern businesses.</p>
+                        </div>
+                    </div>
+                    <div class="services-card">
+                        <div class="services-card-icon"><i class="fa-solid fa-headset"></i></div>
+                        <div class="services-card-content">
+                            <h3 class="services-card-title">IT Support</h3>
+                            <p class="services-card-text">Immediate technical help from certified engineers.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Support Section -->
+    <section class="support" id="support">
+        <div class="container">
+            <h2 class="section-title">Customer Support</h2>
+            <p class="section-text">We are always here to help you out</p>
+            <div class="support-container">
+                <div class="support-content">
+                    <div class="support-item">
+                        <h3 class="support-item-title">Technical Assistance</h3>
+                        <p class="support-item-text">Facing network slowdowns or connection loss? Contact our technical helpdesk right away.</p>
+                    </div>
+                    <div class="support-item">
+                        <h3 class="support-item-title">Billing & Payments</h3>
+                        <p class="support-item-text">Got questions about your monthly bill or payment options? Reach out to our billing team.</p>
+                    </div>
+                </div>
+                <div class="support-info">
+                    <p class="support-info-text">Need immediate help? Call our hotline at <span>+880 1234 567890</span></p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact" id="contact">
+        <div class="container">
+            <h2 class="section-title">Contact Us</h2>
+            <div class="container" style="max-width: 100%; padding: 0;">
+                <div class="contact-content">
+                    <div class="contact-info">
+                        <div class="col-1">
+                            <i class="fa-solid fa-location-dot"></i>
+                            <div>
+                                <h4 class="contact-info-heading">Location</h4>
+                                <p>Dhaka, Bangladesh</p>
+                            </div>
+                        </div>
+                        <div class="col-1">
+                            <i class="fa-solid fa-envelope"></i>
+                            <div>
+                                <h4 class="contact-info-heading">Email Us</h4>
+                                <p>antu.skynetonlinebd@gmail.com</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="contact-form">
+                    <form action="#">
+                        <div class="row">
+                            <input type="text" placeholder="Your Name" class="contact-input">
+                            <input type="email" placeholder="Your Email" class="contact-input">
+                        </div>
+                        <textarea placeholder="Your Message" class="contact-input textarea"></textarea>
+                        <button type="submit" class="btn">Send Message</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer Section -->
+    <footer class="footer">
+        <div class="container">
+            <div class="grid-4" style="color: #fff;">
+                <div class="grid-4-col">
+                    <h3 class="title-sm">Skynet Online BD</h3>
+                    <p style="color: #888; font-size: 14px;">Your reliable internet service provider delivering high-speed bandwidth solutions.</p>
+                </div>
+                <div class="grid-4-col footer-links">
+                    <h3 class="title-sm">Quick Links</h3>
+                    <a href="#header">Home</a><br>
+                    <a href="#about">About</a><br>
+                    <a href="#services">Services</a>
+                </div>
+                <div class="grid-4-col footer-links">
+                    <h3 class="title-sm">Support</h3>
+                    <a href="#support">Help Center</a><br>
+                    <a href="#contact">Contact</a>
+                </div>
+                <div class="grid-4-col">
+                    <h3 class="title-sm">Location Map</h3>
+                    <iframe src="https://www.google.com/maps/embed?pb=..." width="100%" height="120" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+                </div>
+            </div>
+            
+            <div class="bottom-footer" style="margin-top: 2rem;">
+                <div class="followus-wrap">
+                    <div class="followus">
+                        <h3>Follow Us</h3>
+                        <span class="footer-line"></span>
+                        <div class="social-media">
+                            <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
+                            <a href="#"><i class="fa-brands fa-twitter"></i></a>
+                            <a href="#"><i class="fa-brands fa-instagram"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="back-btn-wrap">
+                    <a href="#header" class="back-btn"><i class="fa-solid fa-arrow-up"></i></a>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p class="text">Copyright &copy; 2026 Designed by <span>Antu</span> | Skynet Online BD</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Optional JavaScript for mobile menu toggling matching your CSS class selectors -->
+    <script>
+        const menubar = document.querySelector('.menubar');
+        const navbar = document.querySelector('nav');
+        
+        menubar.addEventListener('click', () => {
+            navbar.classList.toggle('open');
+        });
+    </script>
+</body>
+</html>
