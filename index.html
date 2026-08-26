@@ -1,612 +1,269 @@
 <!DOCTYPE html>
-<html lang="bn">
+<html lang="en">
+
 <head>
-  <meta charset="UTF-8">
-  <title>ESER-ALL Portal</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-  
-  <!-- EmailJS SDK (Latest Version 4) -->
-  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
-  <script type="text/javascript">
-     (function(){
-      emailjs.init({
-          publicKey: "k3Gz4cI70F4UTep3c",
-        });
-     })();
-  </script>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Best ISP in Dhaka City | Sky Movie BD">
+    <title>Sky Movie BD</title>
+    <link rel="shortcut icon" href="assets/images/logo.jpg" type="image/x-icon">
 
-  <style>
-    :root {
-      --bg-color: #0f172a;
-      --text-color: #f8fafc;
-      --card-bg: rgba(255, 255, 255, 0.08);
-      --card-border: rgba(255, 255, 255, 0.15);
-      --card-hover: rgba(255, 255, 255, 0.2);
-      --modal-bg: #1e293b;
-      --modal-border: #334155;
-      --input-bg: #0f172a;
-      --input-border: #475569;
-      --footer-bg: rgba(15, 23, 42, 0.6);
-      --icon-color: #38bdf8;
-      --bg-overlay: rgba(15, 23, 42, 0.75);
-    }
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+        integrity="sha512-Fo3rlrZj/k7ujTnHg4CGR2D7kSs0v4LLanw2qksYuRlEzO+tcaEPQogQ0KaoGN26/zrn20ImR1DfuLWnOo7aBA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
 
-    [data-theme="light"] {
-      --bg-color: #e0f2fe;
-      --text-color: #0c4a6e;
-      --card-bg: rgba(255, 255, 255, 0.85);
-      --card-border: rgba(56, 189, 248, 0.3);
-      --card-hover: #ffffff;
-      --modal-bg: #ffffff;
-      --modal-border: #bae6fd;
-      --input-bg: #f0f9ff;
-      --input-border: #7dd3fc;
-      --footer-bg: rgba(224, 242, 254, 0.85);
-      --icon-color: #0284c7;
-      --bg-overlay: rgba(224, 242, 254, 0.45);
-      animation: gradientBG 15s ease infinite;
-    }
+    <!-- Swiper CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/swiper@7/swiper-bundle.min.css" />
 
-    [data-theme="light"] body {
-      animation: skyColorShift 18s infinite alternate ease-in-out;
-    }
+    <!-- AOS CSS -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 
-    @keyframes skyColorShift {
-      0% { background-color: #e0f2fe; }
-      33% { background-color: #bae6fd; }
-      66% { background-color: #e0f7fa; }
-      100% { background-color: #f0f9ff; }
-    }
+    <!-- Custom Link -->
+    <link rel="stylesheet" href="style.css">
 
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    html, body { min-height: 100%; font-family: 'Segoe UI', Arial, sans-serif; }
+    <!-- Responsive -->
+    <link rel="stylesheet" href="responsive.css">
+
+    <!-- FTP CSS -->
+    <link rel="stylesheet" href="ftp.css">
     
-    body {
-      margin: 0; padding: 0;
-      background: var(--bg-color);
-      color: var(--text-color);
-      display: flex; flex-direction: column; justify-content: space-between;
-      transition: background 0.5s ease, color 0.5s ease;
-      position: relative;
-    }
-
-    .bg-video-container {
-      position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-      overflow: hidden; z-index: 0;
-    }
-
-    .bg-video-container video {
-      width: 100%; height: 100%; object-fit: cover;
-      filter: brightness(0.85) contrast(1.05);
-    }
-
-    .bg-overlay {
-      position: absolute; top: 0; left: 0; width: 100%; height: 100%;
-      background: var(--bg-overlay); transition: background 0.5s ease;
-    }
-    
-    .theme-toggle-btn {
-      position: fixed; top: 20px; right: 20px; z-index: 1001;
-      background: var(--card-bg); border: 1px solid var(--card-border);
-      color: var(--text-color); padding: 10px 16px; border-radius: 50px;
-      cursor: pointer; display: flex; align-items: center; gap: 8px;
-      font-weight: bold; backdrop-filter: blur(8px);
-      box-shadow: 0 4px 12px rgba(2, 132, 199, 0.2); transition: all 0.3s ease;
-    }
-    .theme-toggle-btn:hover { background: var(--card-hover); transform: scale(1.03); }
-
-    .dashboard { position: relative; z-index: 1; padding: 30px 15px 10px; text-align: center; }
-    .main-header { font-size: 32px; font-weight: 800; margin-bottom: 25px; margin-top: 10px; letter-spacing: 0.5px; }
-    .section-title { font-size: 22px; margin: 25px 0 15px; display: flex; justify-content: center; align-items: center; gap: 10px; color: var(--text-color); }
-    .section-title i { color: var(--icon-color); }
-
-    .link-container { 
-      display: flex; 
-      justify-content: center; 
-      align-items: center; 
-      flex-wrap: wrap; 
-      gap: 12px; 
-      max-width: 1000px; 
-      margin: 0 auto 20px auto; 
-    }
-    
-    .link-card {
-      display: flex; 
-      flex-direction: column; 
-      align-items: center; 
-      justify-content: center;
-      padding: 12px 10px; 
-      background: var(--card-bg); 
-      border: 1px solid var(--card-border);
-      border-radius: 14px; 
-      color: var(--text-color); 
-      backdrop-filter: blur(10px);
-      font-size: 13px; 
-      font-weight: 600; 
-      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.08);
-      position: relative; 
-      width: 160px; 
-      height: 110px; 
-      cursor: pointer;
-      transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
-      text-align: center;
-    }
-
-    .link-card i.main-icon { 
-      font-size: 28px; 
-      margin-bottom: 8px; 
-      color: var(--icon-color); 
-      transition: transform 0.2s ease; 
-      flex-shrink: 0;
-    }
-
-    .link-card .card-title {
-      width: 100%;
-      display: -webkit-box;
-      -webkit-line-clamp: 2;
-      -webkit-box-orient: vertical;
-      overflow: hidden;
-      text-overflow: ellipsis;
-      word-break: break-word;
-      line-height: 1.3;
-    }
-
-    .link-card:hover { 
-      transform: translateY(-4px); 
-      background: var(--card-hover); 
-      box-shadow: 0 12px 20px rgba(2, 132, 199, 0.2); 
-    }
-    
-    .link-card:hover i.main-icon { 
-      transform: scale(1.1); 
-    }
-
-    .status-badge {
-      position: absolute; 
-      top: 6px; 
-      right: 6px; 
-      font-size: 9px; 
-      padding: 2px 5px; 
-      border-radius: 10px;
-      font-weight: bold; 
-      display: flex; 
-      align-items: center; 
-      gap: 3px;
-    }
-    .status-badge.online { background: rgba(76, 175, 80, 0.25); color: #4CAF50; border: 1px solid #4CAF50; }
-    .status-badge.offline { background: rgba(244, 67, 54, 0.25); color: #f44336; border: 1px solid #f44336; }
-    .status-badge.checking { background: rgba(255, 193, 7, 0.25); color: #ffc107; border: 1px solid #ffc107; }
-
-    /* Modals (Login & Email) */
-    .user-login-modal, .email-modal { 
-      position: fixed; top: 0; left: 0; width: 100%; height: 100%; 
-      background: rgba(15, 23, 42, 0.85); backdrop-filter: blur(6px);
-      display: flex; justify-content: center; align-items: center; z-index: 1002; 
-    }
-    
-    .modal-content { 
-      background: var(--modal-bg); color: var(--text-color); padding: 28px; 
-      border-radius: 16px; width: 340px; border: 1px solid var(--modal-border); 
-      text-align: center; box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.4); 
-      position: relative;
-    }
-    
-    .modal-content input, .modal-content textarea { 
-      width: 100%; padding: 12px; margin-bottom: 12px; border: 1px solid var(--input-border); 
-      background: var(--input-bg); color: var(--text-color); border-radius: 8px; outline: none; 
-      font-family: inherit; font-size: 13px;
-    }
-    
-    .modal-content textarea {
-      resize: vertical; min-height: 90px;
-    }
-
-    .modal-content button { 
-      padding: 12px; margin-top: 5px; cursor: pointer; border: none; 
-      border-radius: 8px; font-weight: bold; background: #0284c7; color: white; width: 100%; 
-      transition: background 0.2s ease;
-    }
-
-    .modal-content button:hover { background: #0369a1; }
-
-    .close-btn {
-      position: absolute; top: 12px; right: 15px; font-size: 18px; 
-      color: var(--text-color); cursor: pointer; opacity: 0.7; transition: opacity 0.2s;
-    }
-    .close-btn:hover { opacity: 1; }
-
-    /* Divider & Google Login Style */
-    .divider {
-      display: flex; align-items: center; text-align: center;
-      margin: 15px 0; color: #94a3b8; font-size: 12px;
-    }
-    .divider::before, .divider::after {
-      content: ''; flex: 1; border-bottom: 1px solid var(--modal-border);
-    }
-    .divider:not(:empty)::before { margin-right: .5em; }
-    .divider:not(:empty)::after { margin-left: .5em; }
-
-    .google-btn {
-      background: #ffffff !important; color: #333333 !important;
-      display: flex; align-items: center; justify-content: center;
-      gap: 10px; border: 1px solid #cbd5e1 !important; transition: background 0.2s ease;
-    }
-    .google-btn:hover { background: #f1f5f9 !important; }
-
-    .logout-btn { 
-      position: fixed; left: 20px; bottom: 20px; padding: 10px 18px; border-radius: 20px; 
-      border: none; background: #e11d48; color: white; font-size: 14px; font-weight: bold; 
-      cursor: pointer; z-index: 1000; box-shadow: 0 4px 10px rgba(225, 29, 72, 0.3); 
-    }
-    
-    .developer-footer { 
-      position: relative; z-index: 1; text-align: center; padding: 15px 10px; 
-      font-size: 14px; background: var(--footer-bg); margin-top: 30px; backdrop-filter: blur(8px); 
-    }
-    .developer-footer span { font-weight: bold; color: var(--icon-color); }
-  </style>
+    <style>
+        .online-btn {
+            color: #fff;
+            padding-left: 30px;
+            font-size: 30px;
+        } 
+    </style>
 </head>
 
-<body oncontextmenu="return false;">
+<body>
 
-  <div class="bg-video-container">
-    <video autoplay loop muted playsinline poster="https://images.unsplash.com/photo-1506744038136-46273834b3fb">
-      <source src="https://assets.mixkit.co/videos/preview/mixkit-timelapse-of-clouds-and-mountains-2408-large.mp4" type="video/mp4">
-    </video>
-    <div class="bg-overlay"></div>
-  </div>
+    <!-- Header Section -->
 
-  <button class="theme-toggle-btn" id="themeToggleBtn" onclick="toggleTheme()">
-    <i class="fas fa-moon" id="themeIcon"></i>
-    <span id="themeText">Dark Sky</span>
-  </button>
+    <header id="home">
+        <div class="container">
+            <nav>
+                <div class="new-links">
+                    <a href="https://www.youtube.com/" target="_blank"><i class="fab fa-youtube"></i></a>
+                    <a href="https://www.prothomalo.com/" target="_blank">
+                        <img src="assets/images/prothom.jpg" alt="prothomalo">
+                    </a>
+                    <a class="online-btn" href="https://portal.skynetonlinebd.net/" target="_blank">
+                        Online Pay
+                    </a>
+                </div>
 
-  <!-- Login Modal -->
-  <div class="user-login-modal" id="userLoginModal">
-    <div class="modal-content" id="loginBox">
-      <h3 style="margin-bottom: 15px;"><i class="fas fa-shield-alt" style="color: var(--icon-color);"></i> Secure Login</h3>
-      <input type="email" id="userInputEmail" placeholder="Email Address" autocomplete="off">
-      <input type="password" id="userInputPass" placeholder="Password" autocomplete="off">
-      <button onclick="checkUserLogin()">Login</button>
-      
-      <div class="divider">OR</div>
-      
-      <!-- Google Login Button -->
-      <button class="google-btn" onclick="checkGoogleLogin()">
-        <i class="fab fa-google" style="color: #ea4335; font-size: 16px;"></i> Sign in with Google
-      </button>
-
-      <div id="loginError" style="color: #f44336; font-size: 12px; margin-top: 10px; display: none;"></div>
-    </div>
-  </div>
-
-  <!-- Email Modal Form -->
-  <div class="email-modal" id="emailModal" style="display: none;">
-    <div class="modal-content">
-      <span class="close-btn" onclick="closeEmailModal()"><i class="fas fa-times"></i></span>
-      <h3 style="margin-bottom: 15px;"><i class="fas fa-envelope" style="color: var(--icon-color);"></i> Send Email</h3>
-      
-      <form id="emailForm" onsubmit="sendEmail(event)">
-        <input type="email" id="senderEmail" placeholder="Your Email Address" required>
-        <input type="text" id="emailSubject" placeholder="Subject" required>
-        <textarea id="emailMessage" placeholder="Type your message here..." required></textarea>
-        <button type="submit" id="sendBtn"><i class="fas fa-paper-plane"></i> Send Mail</button>
-      </form>
-      
-      <div id="emailStatus" style="font-size: 12px; margin-top: 12px; display: none;"></div>
-    </div>
-  </div>
-
-  <!-- Dashboard Content -->
-  <div class="dashboard" id="mainDashboard" style="display: none;">
-    <div class="main-header">ESER-ALL Portal</div>
-
-    <div class="section-title"><i class="fas fa-server"></i> FTP Servers</div>
-    <div class="link-container" id="ftp-all-section"></div>
-
-    <div class="section-title"><i class="fas fa-tv"></i> Live TV</div>
-    <div class="link-container" id="tv-all-section"></div>
-
-    <div class="section-title"><i class="fas fa-landmark"></i> সরকারি সেবা (Government Services)</div>
-    <div class="link-container" id="gov-section"></div>
-
-    <div class="section-title"><i class="fas fa-graduation-cap"></i> শিক্ষা ও ভর্তি (Education & Admissions)</div>
-    <div class="link-container" id="edu-section"></div>
-
-    <div class="section-title"><i class="fas fa-ticket-alt"></i> Online Ticket</div>
-    <div class="link-container" id="ticket-section"></div>
-
-    <div class="section-title"><i class="fas fa-envelope"></i> যোগাযোগ (Contact Us)</div>
-    <div class="link-container" id="contact-section"></div>
-  </div>
-
-  <button class="logout-btn" id="btnLogout" style="display: none;" onclick="userLogout()">
-    <i class="fas fa-sign-out-alt"></i> Logout
-  </button>
-
-  <footer class="developer-footer">
-    Developed by <span>Antu</span>
-  </footer>
-
-  <!-- Firebase SDKs -->
-  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth-compat.js"></script>
-
-  <script>
-    // Theme setup
-    function initTheme() {
-      const theme = localStorage.getItem("theme") || "dark";
-      document.documentElement.setAttribute("data-theme", theme);
-      updateThemeUI(theme);
-    }
-
-    function toggleTheme() {
-      const current = document.documentElement.getAttribute("data-theme");
-      const next = current === "light" ? "dark" : "light";
-      document.documentElement.setAttribute("data-theme", next);
-      localStorage.setItem("theme", next);
-      updateThemeUI(next);
-    }
-
-    function updateThemeUI(theme) {
-      const icon = document.getElementById("themeIcon");
-      const text = document.getElementById("themeText");
-      if (theme === "light") {
-        icon.className = "fas fa-sun";
-        text.innerText = "Sky Light";
-      } else {
-        icon.className = "fas fa-moon";
-        text.innerText = "Night Sky";
-      }
-    }
-    initTheme();
-
-    // Firebase Config
-    const firebaseConfig = {
-      apiKey: "AIzaSyDB4r_a5gPtKhlzM0qqmYHBb6HA_I2SmHQ",
-      authDomain: "eser-all.firebaseapp.com",
-      databaseURL: "http://eser-all-default-rtdb.firebaseio.com",
-      projectId: "eser-all",
-      storageBucket: "eser-all.appspot.com",
-      messagingSenderId: "741870576674",
-      appId: "1:741870576674:web:2a5094bd05f44f0b98d67b"
-    };
-    firebase.initializeApp(firebaseConfig);
-    const auth = firebase.auth();
-
-    // LINK ARRAYS
-    let ftpLinks = [
-      { id: "ftp1", title: "Sam FTP", url: "http://172.16.50.4/" },
-      { id: "ftp2", title: "Crazy HD", url: "http://crazyhd.com/" },
-      { id: "ftp3", title: "Ctg Movies", url: "https://ctgmovies.com/" },
-      { id: "ftp4", title: "Ghuri FTP", url: "http://103.96.104.6//" },
-      { id: "ftp5", title: "ICC FTP", url: "http://10.16.100.244/dashboard.php?session=c2c3e6c0aa01b1c155cec1fbab1bc6c47883390af1b4cb470ee461ff53665061/" }
-    ];
-
-    let tvLinks = [
-      { id: "tv1", title: "Toffee Live", url: "https://toffeelive.com/" },
-      { id: "tv2", title: "Bongo BD", url: "https://bongobd.com/" },
-      { id: "tv3", title: "T Sports", url: "https://www.tsports.com/" },
-      { id: "tv4", title: "IP TV", url: "http://172.28.28.54/" }
-    ];
-
-    let govLinks = [
-      { title: "NID / ভোটার আবেদন", url: "http://services.nidw.gov.bd" },
-      { title: "জন্ম নিবন্ধন ও সংশোধন", url: "http://bdris.gov.bd" },
-      { title: "পাসপোর্টের আবেদন", url: "http://epassport.gov.bd" },
-      { title: "টিন (e-TIN) সার্টিফিকেট", url: "http://incometax.gov.bd" },
-      { title: "পুলিশ ক্লিয়ারেন্স আবেদন", url: "http://pcc.police.gov.bd" }
-    ];
-
-    let eduLinks = [
-      { title: "JSC/JDC/SSC/DAKHIL/HSC/ALIM", url: "https://www.educationboardresults.gov.bd/v2/home" },
-      { title: "ঢাকা বিশ্ববিদ্যালয়", url: "http://duadmission.eis.du.ac.bd" },
-      { title: "জাতীয় বিশ্ববিদ্যালয় ফলাফল", url: "http://results.nu.ac.bd/" }
-    ];
-
-    let ticketLinks = [
-      { title: "Railway Ticket", url: "https://eticket.railway.gov.bd/" },
-      { title: "Biman Ticket", url: "https://gozayaan.com/" }
-    ];
-
-    let contactLinks = [
-      { title: "Send Email", action: "openEmailModal", type: "emailModal" }
-    ];
-
-    // Firebase Auth Login
-    function checkUserLogin() {
-      const email = document.getElementById("userInputEmail").value.trim();
-      const pass = document.getElementById("userInputPass").value.trim();
-      const err = document.getElementById("loginError");
-      
-      if(!email || !pass) {
-        err.innerText = "Please enter both email & password.";
-        err.style.display = "block";
-        return;
-      }
-
-      auth.signInWithEmailAndPassword(email, pass)
-        .then(() => {
-          err.style.display = "none";
-          showDashboard();
-        })
-        .catch((error) => {
-          err.innerText = "Invalid Login Credentials!";
-          err.style.display = "block";
-        });
-    }
-
-    function checkGoogleLogin() {
-      const provider = new firebase.auth.GoogleAuthProvider();
-      const err = document.getElementById("loginError");
-
-      auth.signInWithPopup(provider)
-        .then(() => {
-          err.style.display = "none";
-          showDashboard();
-        })
-        .catch((error) => {
-          err.innerText = error.message || "Google Sign-In failed!";
-          err.style.display = "block";
-        });
-    }
-
-    auth.onAuthStateChanged((user) => {
-      if (user) {
-        showDashboard();
-      } else {
-        document.getElementById("userLoginModal").style.display = "flex";
-        document.getElementById("mainDashboard").style.display = "none";
-        document.getElementById("btnLogout").style.display = "none";
-      }
-    });
-
-    function showDashboard() {
-      document.getElementById("userLoginModal").style.display = "none";
-      document.getElementById("mainDashboard").style.display = "block";
-      document.getElementById("btnLogout").style.display = "block";
-      renderLinks();
-      checkAllNetworkStatuses();
-    }
-
-    function userLogout() {
-      auth.signOut().then(() => {
-        window.location.reload();
-      });
-    }
-
-    function renderLinks() {
-      const ftpSec = document.getElementById("ftp-all-section");
-      const tvSec = document.getElementById("tv-all-section");
-      const govSec = document.getElementById("gov-section");
-      const eduSec = document.getElementById("edu-section");
-      const ticketSec = document.getElementById("ticket-section");
-      const contactSec = document.getElementById("contact-section");
-
-      if(ftpSec) ftpSec.innerHTML = "";
-      if(tvSec) tvSec.innerHTML = "";
-      if(govSec) govSec.innerHTML = "";
-      if(eduSec) eduSec.innerHTML = "";
-      if(ticketSec) ticketSec.innerHTML = "";
-      if(contactSec) contactSec.innerHTML = "";
-
-      ftpLinks.forEach(item => { if(ftpSec) ftpSec.innerHTML += genCard(item.title, item.url, "ftp", item.id); });
-      tvLinks.forEach(item => { if(tvSec) tvSec.innerHTML += genCard(item.title, item.url, "tv", item.id); });
-      govLinks.forEach(item => { if(govSec) govSec.innerHTML += genCard(item.title, item.url, "gov"); });
-      eduLinks.forEach(item => { if(eduSec) eduSec.innerHTML += genCard(item.title, item.url, "edu"); });
-      ticketLinks.forEach(item => { if(ticketSec) ticketSec.innerHTML += genCard(item.title, item.url, "ticket"); });
-      contactLinks.forEach(item => { if(contactSec) contactSec.innerHTML += genCard(item.title, item.action, "contact", null, item.type); });
-    }
-
-    function genCard(title, target, category, id = null, type = "url") {
-      let iconClass = "fas fa-globe";
-      
-      if (category === "ftp") iconClass = "fas fa-server";
-      if (category === "tv") iconClass = "fas fa-tv";
-      if (category === "gov") iconClass = "fas fa-landmark";
-      if (category === "edu") iconClass = "fas fa-graduation-cap";
-      if (category === "ticket") {
-        if (title.toLowerCase().includes("railway")) iconClass = "fas fa-train";
-        else if (title.toLowerCase().includes("biman")) iconClass = "fas fa-plane";
-        else iconClass = "fas fa-ticket-alt";
-      }
-      if (category === "contact") iconClass = "fas fa-paper-plane";
-
-      let badgeHTML = "";
-      if (id) {
-        badgeHTML = `<div class="status-badge checking" id="status-${id}"><i class="fas fa-spinner fa-spin"></i></div>`;
-      }
-
-      let onClickAction = `window.open('${target}', '_blank')`;
-      if (type === "emailModal") {
-        onClickAction = `${target}()`;
-      }
-
-      return `
-        <div class="link-card" onclick="${onClickAction}">
-          ${badgeHTML}
-          <i class="${iconClass} main-icon"></i>
-          <div class="card-title">${title}</div>
+                <div class="nav-links">
+                    <ul>
+                        <li><a href="http://172.19.178.178/tv/" target="_blank">Live TV</a></li>
+                        <li><a href="http://172.19.178.180/" target="_blank">Live Tv 2</a></li>
+                        <li><a href="http://dugdugilive.com/" target="_blank">Live Tv 3</a></li>
+                        <li><a href="http://172.17.50.112/" target="_blank">Live Tv 4</a></li>
+                        <li><a href="http://172.16.88.88/" target="_blank">Live Tv 5</a></li>
+                    </ul>
+                </div>
+                <div class="menubar">
+                    <div class="bar"></div>
+                </div>
+            </nav>
         </div>
-      `;
-    }
 
-    // Ping Checker
-    function checkNetworkStatus(url, elementId) {
-      const badge = document.getElementById(`status-${elementId}`);
-      if (!badge) return;
+        <div class="container">
 
-      const controller = new AbortController();
-      const timeoutId = setTimeout(() => controller.abort(), 4000);
+            <div class="hotline">
+                <h4> <span class="hotline-span"> Hotline- 01901401701-2, 09639150050</span> </h4>
+            </div>
 
-      fetch(url, { mode: 'no-cors', signal: controller.signal })
-        .then(() => {
-          clearTimeout(timeoutId);
-          badge.className = "status-badge online";
-          badge.innerHTML = `<i class="fas fa-wifi"></i>`;
-        })
-        .catch(() => {
-          clearTimeout(timeoutId);
-          badge.className = "status-badge offline";
-          badge.innerHTML = `<i class="fas fa-times-circle"></i>`;
-        });
-    }
+            <h3 class="welcome-message"><span>Welcome</span> To</h3>
 
-    function checkAllNetworkStatuses() {
-      ftpLinks.forEach(item => checkNetworkStatus(item.url, item.id));
-      tvLinks.forEach(item => checkNetworkStatus(item.url, item.id));
-    }
+            <h1 class="section-title brand-name"> <span class="brand-name1">Sky </span> <span class="brand-name2">Movie</span> <span class="brand-name3">BD</span></h1>
 
-    // Email Modal Controls
-    function openEmailModal() {
-      document.getElementById("emailModal").style.display = "flex";
-      document.getElementById("emailStatus").style.display = "none";
-      document.getElementById("emailForm").reset();
-    }
+            <div class="ftp-servers">
+                <div class="ftp">
+                    <a href="http://172.16.50.4/" target="_blank">
+                        <img src="assets/images/ftp-1.jpeg" alt="Same ftp">
+                    </a>
+                    <div class="ftp-description">Same FTP</div>
+                </div>
 
-    function closeEmailModal() {
-      document.getElementById("emailModal").style.display = "none";
-    }
+                <div class="ftp">
+                    <a href="http://10.16.100.244/" target="_blank">
+                        <img src="assets/images/ftp-icc.jpg" alt="Live TV">
+                    </a>
+                    <div class="ftp-description">ICC Movie Server</div>
+                </div>
 
-    // EmailJS Send Function
-    function sendEmail(event) {
-      event.preventDefault();
+                <div class="ftp">
+                    <a href="http://172.27.27.84/" target="_blank">
+                        <img src="assets/images/ftp-3.jpg" alt="Movie">
+                    </a>
+                    <div class="ftp-description">KS Movie Server</div>
+                </div>
 
-      const btn = document.getElementById("sendBtn");
-      const status = document.getElementById("emailStatus");
-      
-      const senderEmail = document.getElementById("senderEmail").value;
-      const subject = document.getElementById("emailSubject").value;
-      const message = document.getElementById("emailMessage").value;
+                <div class="ftp">
+                    <a href="http://172.19.178.178/" target="_blank">
+                        <img src="assets/images/ftp-4.jpg" alt="Live Movie">
+                    </a>
+                    <div class="ftp-description">All FTP Server</div>
+                </div>
 
-      btn.disabled = true;
-      btn.innerHTML = `<i class="fas fa-spinner fa-spin"></i> Sending...`;
+                <div class="ftp">
+                    <a href="https://fmoviesz.to/country/india" target="_blank">
+                        <img src="assets/images/ftp-5.jpg" alt="skynet ftp">
+                    </a>
+                    <div class="ftp-description">English Movies FTP</div>
+                </div>
+            </div>
 
-      const templateParams = {
-        from_email: senderEmail,
-        subject: subject,
-        message: message
-      };
-     emailjs.send("service_oyptt6l", "template_qvj0msk", templateParams)
-        .then(function(response) {
-          status.style.color = "#4CAF50";
-          status.innerText = "Email sent successfully!";
-          status.style.display = "block";
-          btn.disabled = false;
-          btn.innerHTML = `<i class="fas fa-paper-plane"></i> Send Mail`;
-          setTimeout(() => {
-            closeEmailModal();
-          }, 2000);
-        }, function(error) {
-          console.error("EmailJS Error:", error);
-          status.style.color = "#f44336";
-          status.innerText = "Failed: " + (error.text || "Check EmailJS Config");
-          status.style.display = "block";
-          btn.disabled = false;
-          btn.innerHTML = `<i class="fas fa-paper-plane"></i> Send Mail`;
-        });
-    }
-  </script>
+            <div class="ftp-servers">
+                <div class="ftp">
+                    <a href="http://172.19.178.179/" target="_blank">
+                        <img src="assets/images/ftp-6.jpg" alt="skynet ftp">
+                    </a>
+                    <div class="ftp-description">Cloud FTP Server</div>
+                </div>
+
+                <div class="ftp">
+                    <a href="http://172.27.27.84/" target="_blank">
+                        <img src="assets/images/ftp-7.jpg" alt="skynet ftp">
+                    </a>
+                    <div class="ftp-description">KS Movie Server</div>
+                </div>
+
+                <div class="ftp">
+                    <a href="https://moviehaat.net/" target="_blank">
+                        <img src="assets/images/ftp8.jpg" alt="skynet ftp">
+                    </a>
+                    <div class="ftp-description">MovieHaat FTP</div>
+                </div>
+
+                <div class="ftp">
+                    <a href="https://discoveryftp.net/" target="_blank">
+                        <img src="assets/images/ftp-9.jpg" alt="skynet ftp">
+                    </a>
+                    <div class="ftp-description">Discovery FTP Server</div>
+                </div>
+
+                <div class="ftp">
+                    <a href="https://mangogamers.com/" target="_blank">
+                        <img src="assets/images/ftp-10.jpg" alt="skynet ftp">
+                    </a>
+                    <div class="ftp-description">Game Servers</div>
+                </div>
+            </div>
+
+            <div class="ftp-servers">
+                <div class="ftp">
+                    <a href="http://10.100.100.10/" target="_blank">
+                        <img src="assets/images/ftp-img.jpeg" alt="skynet ftp">
+                    </a>
+                    <div class="ftp-description">Showtime Movie Server</div>
+                </div>
+
+                <div class="ftp">
+                    <a href="http://new.circleftp.net/" target="_blank">
+                        <img src="assets/images/ftp-img2.jpeg" alt="Live Tv"> 
+                    </a>
+                    <div class="ftp-description">Cercle FTP Server</div>
+                </div>
+
+                <div class="ftp">
+                    <a href="http://10.10.10.3/" target="_blank">
+                        <img src="assets/images/ftp-img3.jpeg" alt="skynet ftp">
+                    </a>
+                    <div class="ftp-description">FNF Ftp Server</div>
+                </div>
+
+                <div class="ftp">
+                    <a href="https://toffeelive.com/" target="_blank">
+                        <img src="assets/images/ftp-img4.png" alt="Toffee Live TV">
+                    </a>
+                    <div class="ftp-description">Toffee Live TV</div>
+                </div>
+
+                <div class="ftp">
+                    <a href="http://www.bdlan.net/" target="_blank">
+                        <img src="assets/images/ftp-img5.jpeg" alt="BD Lan ftp">
+                    </a>
+                    <div class="ftp-description">Movie and Live TV</div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Footer Section -->
+
+    <footer class="footer">
+        <div class="grid-4">
+            <div class="grid-4-col footer-map">
+                <h3 class="title-sm">Sky Movie BD</h3>
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3648.7934763594067!2d90.4088352!3d23.861466299999996!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3755c58ffc4b60f7%3A0xf0febb4aae416119!2sSkynetonlinebd!5e0!3m2!1sen!2sbd!4v1740073523553!5m2!1sen!2sbd" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            </div>
+            <div class="grid-4-col footer-links footer-links1">
+                <h3 class="title-sm">Links</h3>
+                <ul>
+                    <li><a href="index.html">About Us</a></li>
+                    <li><a href="#package">Package</a></li>
+                    <li><a href="index.html">Service</a></li>
+                    <li><a href="index.html">Support</a></li>
+                    <li><a href="index.html">Contact</a></li>
+                </ul>
+            </div>
+            <div class="grid-4-col footer-links">
+                <h3 class="title-sm">Our Servers</h3>
+                <ul>
+                    <li><a href="http://103.222.20.150/" target="_blank">FTP Server</a></li>
+                    <li><a href="http://103.203.93.2/" target="_blank">Online TV</a></li>
+                    <li><a href="http://vdomela.com/" target="_blank">More Ftp</a></li>
+                </ul>
+            </div>
+            <div class="grid-4-col bottom-footer">
+                <div class="followus-wrap">
+                    <div class="followus">
+                        <h3>Follow Us</h3>
+                        <span class="footer-line"></span>
+                        <div class="social-media">
+                            <a href="https://www.facebook.com/Sky Movie BD/">
+                                <i class="fab fa-facebook-f"></i>
+                            </a>
+                            <a href="https://twitter.com/?lang=en">
+                                <i class="fab fa-twitter"></i>
+                            </a>
+                            <a href="https://www.instagram.com/">
+                                <i class="fab fa-instagram"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="grid-4-col back-btn-wrap">
+                <a href="#" class="back-btn">
+                    <i class="fas fa-chevron-up"></i>
+                </a>
+            </div>
+        </div>
+
+        <div class="copyright">
+            <p class="text">Copyright &copy; 2023 All rights reserved |<span> Sky Movie BD</span></p>
+        </div>
+    </footer>
+
+    <!-- Swiper JS -->
+    <script src="https://unpkg.com/swiper@7/swiper-bundle.min.js"></script>
+
+    <!-- AOS JS -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
+    <!-- Jquery -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"
+        integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+    <!-- Custom JS -->
+    <script src="main.js"></script>
+
 </body>
+
 </html>
